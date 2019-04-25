@@ -2,17 +2,17 @@
 # tasks file for itigoag.bitlocker
 
 - name: add OS specific variables
-  include_vars: "{{ loop_vars }}"
+  include_vars: '{{ loop_vars }}'
   with_first_found:
     - files:
-        - "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
-        - "{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml"
-        - "{{ ansible_distribution }}.yml"
-        - "{{ ansible_os_family }}.yml"
-        - "{{ ansible_system }}.yml"
-        - "defaults.yml"
+        - '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+        - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ansible_distribution }}.yml'
+        - '{{ ansible_os_family }}.yml'
+        - '{{ ansible_system }}.yml'
+        - 'defaults.yml'
       paths:
-        - "vars"
+        - 'vars'
   loop_control:
     loop_var: loop_vars
   tags:
@@ -21,10 +21,10 @@
 
 - win_tpm_facts:
 
-- name: "Windows : Bitlocker Enabled"
+- name: 'Windows : Bitlocker Enabled'
   win_bitlocker:
-    mount: "C:"
-    state: enable
+    mount: 'C:'
+    state: enabled
     encryption:
     keyprotector: RecoveryPasswordProtector
   when: ansible_tpm.TpmPresent
